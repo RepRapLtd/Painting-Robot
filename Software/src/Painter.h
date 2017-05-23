@@ -13,7 +13,7 @@
 
 using namespace cv;
 
-#define  MAX_PIXEL 255
+#define MAX_PIXEL 255
 
 class Painter
 {
