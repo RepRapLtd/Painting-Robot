@@ -5,15 +5,34 @@ from PIL import Image,  ImageFilter, ImagePalette
 #from skimage.viewer import ImageViewer, Qt
 import matplotlib.pyplot as plt
 
+def RGBtoCMYK(colour):
+ r = colour[0]
+ g = colour[1]
+ b = colour[2]
+ k = 1.0 - max((r, g, b))
+ c = (1.0 - r - k)/(1.0 - k)
+ m = (1.0 - g - k)/(1.0 - k)
+ y = (1.0 - b - k)/(1.0 - k)
+ return (c, m, y, k)
+
+
 #Read image
-im = Image.open( '../../Artworks/cb-1.jpg' )
+im = Image.open( '../../Artworks/1.jpeg' )
+im = im.quantize(2)
 im.show()
-im = im.convert("P", palette = Image.ADAPTIVE, colors = 16)
-p = im.getcolors()
-print(p)
-im.show()
-#im1 = ImagePalette.ImagePalette(mode ='RGB', palette = None, size = 0)
-#print(im1)
+#p = im.getpalette()
+#for c in p:
+ #c0 = c[0]
+ #print(c)
+ #r, g, b = c0
+ #print(r, g, b)
+c = (0.6,0.5,0.5)
+print(c)
+print(RGBtoCMYK(c))
+
+#im = im.convert('RGB')
+#im.save('../../Artworks/1a.jpg')
+
 
 '''
 for q in range(0, 201, 40):
