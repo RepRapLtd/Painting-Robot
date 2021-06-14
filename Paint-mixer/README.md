@@ -1,5 +1,7 @@
 # Mixing Paint
 
+We **THINK** this is right (all corrections gratefully received...):
+
 When you have a colour picture in a computer that uses red (*R*), green (*G*), and blue (*B*) additive light values you sometimes need to print it; or, for this project, paint it, maybe using a robot.
 
 That means it has to be converted to the subtractive primaries for ink or paint: cyan (*C*), magenta (*M*), and yellow (*Y*), together with black (*K*).
