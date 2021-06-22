@@ -18,7 +18,7 @@ We will then feed these into another AI that turns photographs into paintings in
 
 ![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpg)
 
-Finally, we'll build a robot that will paint that in acrylic on a panel.
+Finally, we'll build a robot that will paint that in acrylic on a panel. The software that generates paintings from photographs (real or otherwise) is called Night Café (after the Van Gough painting) and is [available here](https://creator.nightcafe.studio/).
 
 We won't just start with photorealism, we will also use AI-generated abstracts, like this:
 
