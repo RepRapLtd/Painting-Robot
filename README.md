@@ -16,13 +16,13 @@ This woman has never existed. She was created by [StyleGAN2](https://arxiv.org/a
 
 We will then feed these into another AI that turns photographs into paintings in any number of different styles, like this:
 
-![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/main/Artworks/ai6-nc.jpg)
+![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpg)
 
 Finally, we'll build a robot that will paint that in acrylic on a panel.
 
 We won't just start with photorealism, we will also use AI-generated abstracts, like this:
 
-![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpg)
+![abstract 1](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/1.jpeg)
 
 And paint them directly. That was from [here](https://thisartworkdoesnotexist.com/), incidentally.
 
