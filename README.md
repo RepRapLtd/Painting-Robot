@@ -10,7 +10,7 @@ These days, of course, we have computers and robots to do all that, including so
 
 So the general idea of this project is to start with an AI (or possibly even a *camera*) generating photorealistic images like this:
 
-![ash hair](https://github.com/RepRapLtd/Painting-Robot/blob/main/Artworks/ai-face-6.jpg)
+![ash hair](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai-face-6.jpeg)
 
 This woman has never existed. She was created by [StyleGAN2](https://arxiv.org/abs/1912.04958). You can [experiment with this here](https://thispersondoesnotexist.com/). We won't just be using AI images of people, but also of landscapes, seascpes, still lives, and all the rest.
 
@@ -22,7 +22,7 @@ Finally, we'll build a robot that will paint that in acrylic on a panel.
 
 We won't just start with photorealism, we will also use AI-generated abstracts, like this:
 
-![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/main/Artworks/1.jpg)
+![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpg)
 
 And paint them directly. That was from [here](https://thisartworkdoesnotexist.com/), incidentally.
 
