@@ -1,8 +1,53 @@
 # Painting-Robot
 
-Artworks from: https://thisartworkdoesnotexist.com/
+This is a project to create a painting robot. But this is a tricky thing to do, so we will do it in stages hoping that each stage on its own will be useful.
 
-Robots:
+## Background
+
+A while ago any half-decent artist would rock up at the palace of Lorenzo de Medici in a mendicant sort of way then later depart with a wheelbarrow full of gold ducats.  These they would use to set up a Florentine atelier.  Here they would install a dozen or so junior wannabe artists.  These would be set to gathering firewood, grinding pigments, poisoning themselves with the results, making flat(ish) wood panels,  trimming candles and all the rest while the artist thought *Profound Artistic Thoughts* and, from time to time, dabbed a bit of paint on a panel.
+
+These days, of course, we have computers and robots to do all that, including some - though not all - of the *Profound Artistic Thinking*.
+
+So the general idea of this project is to start with an AI (or possibly even a *camera*) generating photorealistic images like this:
+
+![ash hair](https://github.com/RepRapLtd/Painting-Robot/blob/main/Artworks/ai-face-6.jpg)
+
+This woman has never existed. She was created by [StyleGAN2](https://arxiv.org/abs/1912.04958). You can [experiment with this here](https://thispersondoesnotexist.com/). We won't just be using AI images of people, but also of landscapes, seascpes, still lives, and all the rest.
+
+We will then feed these into another AI that turns photographs into paintings in any number of different styles, like this:
+
+![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/main/Artworks/ai6-nc.jpg)
+
+Finally, we'll build a robot that will paint that in acrylic on a panel.
+
+We won't just start with photorealism, we will also use AI-generated abstracts, like this:
+
+![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/main/Artworks/1.jpg)
+
+And paint them directly. That was from [here](https://thisartworkdoesnotexist.com/), incidentally.
+
+All the generation and digital manipulation of images is pretty much in place at free sites like those listed above on the web.
+
+But to start with, we are just going to make a...
+
+## Paint mixer
+
+This will be a device loaded with cyan, magenta, yellow and white paint in precisely metered syringe pumps. You will click on a pixel of the image you want to paint, and the device will give you one mililiter (or whatever volume you select) of the mix you need to get the colour of that pixel.
+
+You can then use that to paint the image by hand. If you're feeling like cheating, as [Vermeer did using a camera obscura](https://www.bbc.co.uk/history/british/empire_seapower/vermeer_camera_01.shtml), you can even use a data projector to throw the image onto your canvas or panel to guide you.
+
+When that's working we will go on to build a...
+ 
+## The painting robot
+
+We intend the painting robot to be a machine that works with real artist's brushes on panels. It'll probably be a cartesian design and will be largely 3D printed.
+
+## Licence
+
+All this work is free and open source, licenced under the GPL.
+
+
+## Some other painting robots:
 
 https://makezine.com/2012/04/22/botspot-open-source-art-robots/
 

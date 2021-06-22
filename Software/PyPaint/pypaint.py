@@ -1,9 +1,11 @@
-from PIL import Image,  ImageFilter, ImagePalette
+from PIL import Image, ImageTk
+#, ImageFilter, ImagePalette
+import tkinter
 #import numpy as np
 #import cv2
 #from skimage import io
 #from skimage.viewer import ImageViewer, Qt
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 def RGBtoCMYK(colour):
  r = colour[0]
@@ -15,34 +17,51 @@ def RGBtoCMYK(colour):
  y = (1.0 - b - k)/(1.0 - k)
  return (c, m, y, k)
 
+def RGBtoCMYW(colour):
+ r = colour[0]
+ g = colour[1]
+ b = colour[2]
+ k = 1.0 - max((r, g, b))
+ w = 1 - k
+ c = 1.0 - r + k/3.0
+ m = 1.0 - g + k/3.0
+ y = 1.0 - b + k/3.0
+ s = w + c + m + y
+ w = w/s
+ c = c/s
+ m = m/s
+ y = y/s
+ return (c, m, y, w)
 
-#Read image
-im = Image.open( '../../Artworks/1.jpeg' )
-im = im.quantize(2)
-im.show()
-#p = im.getpalette()
-#for c in p:
- #c0 = c[0]
- #print(c)
- #r, g, b = c0
- #print(r, g, b)
-c = (0.6,0.5,0.5)
-print(c)
-print(RGBtoCMYK(c))
+def ColourScale(colour):
+ r = colour[0]/255.0
+ g = colour[1]/255.0
+ b = colour[2]/255.0
+ return (r, g, b)
 
-#im = im.convert('RGB')
-#im.save('../../Artworks/1a.jpg')
+class Picture:
+
+ def callback(self, event):
+  c = ColourScale(self.pixels[event.x,event.y])
+  print("x = ", event.x, ", y = ", event.y, ", rgb: ", c, ", cmyw: ", RGBtoCMYW(c))
+
+ def __init__(self, name):
+  self.window = tkinter.Tk(className=name)
+  im = Image.open(name)
+  #im = im.quantize(4)
+  #im.show()
+  self.pixels = im.load()
+  canvas = tkinter.Canvas(self.window, width=im.size[0], height=im.size[1])
+  canvas.pack()
+  image_tk = ImageTk.PhotoImage(im)
+  canvas.create_image(im.size[0]//2, im.size[1]//2, image=image_tk)
+  canvas.bind("<Button-1>", self.callback)
+  self.window.mainloop()
+
+p = Picture('../../Artworks/ai6-nc.jpg')
 
 
-'''
-for q in range(0, 201, 40):
- q1 = q
- if q1 < 1:
-  q1 = 1
- r = 50-q/4
- print('r: ', r, ' q: ', q1)
- im2 = im.filter(ImageFilter.BoxBlur(r))
- #im2.show()
- im3 = im2.quantize(q1)
- im3.show()
-'''
+
+
+
+
