@@ -12,14 +12,12 @@ So the general idea of this project is to start with an AI (or possibly even a *
 
 <table style="width:100%">
   <tr>
-    <th>
-    </th>![ash hair](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai-face-6.jpeg)
-    <th>![glasses bloke](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai-face-10.jpeg)
+    <th><img width: 100%; display: block; src="https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai-face-6.jpeg" alt="ash hair">
+    </th>
+    <th><img width: 100%; display: block; src="https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai-face-10.jpeg" alt="glasses bloke">
     </th>
   </tr>
 </table>
-
-
 
 These people have never existed. They were created by [StyleGAN2](https://arxiv.org/abs/1912.04958). You can [experiment with this here](https://thispersondoesnotexist.com/). We won't just be using AI images of people, but also of landscapes, seascpes, still lives, and all the rest.
 
@@ -27,12 +25,13 @@ We will then feed these into another AI that turns photographs into paintings in
 
 <table style="width:100%">
   <tr>
-    <th>
-    </th>![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpg)
-    <th>![glasses bloke](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai10-nc.jpeg)
+    <th><img width: 100%; display: block; src="https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpeg" alt="ash hair">
+    </th>
+    <th><img width: 100%; display: block; src="https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai10-nc.jpeg" alt="glasses bloke">
     </th>
   </tr>
 </table>
+
 
 Finally, we'll build a robot that will paint that in acrylic on a panel. The software that generates paintings from photographs (real or otherwise) is called Night Café (after the Van Gough painting) and is [available here](https://creator.nightcafe.studio/).
 
