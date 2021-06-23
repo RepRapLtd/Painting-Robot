@@ -25,9 +25,9 @@ We will then feed these into another AI that turns photographs into paintings in
 
 <table style="width:100%">
   <tr>
-    <th><img width: 100%; display: block; src="https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpeg" alt="ash hair">
+    <th><img width: 100%; display: block; src="https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpg" alt="ash hair">
     </th>
-    <th><img width: 100%; display: block; src="https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai10-nc.jpeg" alt="glasses bloke">
+    <th><img width: 100%; display: block; src="https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai10-nc.jpg" alt="glasses bloke">
     </th>
   </tr>
 </table>
