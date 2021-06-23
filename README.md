@@ -10,13 +10,29 @@ These days, of course, we have computers and robots to do all that, including so
 
 So the general idea of this project is to start with an AI (or possibly even a *camera*) generating photorealistic images like this:
 
-![ash hair](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai-face-6.jpeg)
+<table style="width:100%">
+  <tr>
+    <th>
+    </th>![ash hair](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai-face-6.jpeg)
+    <th>![glasses bloke](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai-face-10.jpeg)
+    </th>
+  </tr>
+</table>
 
-This woman has never existed. She was created by [StyleGAN2](https://arxiv.org/abs/1912.04958). You can [experiment with this here](https://thispersondoesnotexist.com/). We won't just be using AI images of people, but also of landscapes, seascpes, still lives, and all the rest.
+
+
+These people have never existed. They were created by [StyleGAN2](https://arxiv.org/abs/1912.04958). You can [experiment with this here](https://thispersondoesnotexist.com/). We won't just be using AI images of people, but also of landscapes, seascpes, still lives, and all the rest.
 
 We will then feed these into another AI that turns photographs into paintings in any number of different styles, like this:
 
-![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpg)
+<table style="width:100%">
+  <tr>
+    <th>
+    </th>![ash hair painting](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai6-nc.jpg)
+    <th>![glasses bloke](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/ai10-nc.jpeg)
+    </th>
+  </tr>
+</table>
 
 Finally, we'll build a robot that will paint that in acrylic on a panel. The software that generates paintings from photographs (real or otherwise) is called Night Café (after the Van Gough painting) and is [available here](https://creator.nightcafe.studio/).
 
@@ -36,7 +52,7 @@ This will be a device loaded with cyan, magenta, yellow and white paint in preci
 
 You can then use that to paint the image by hand. If you're feeling like cheating, as [Vermeer did using a camera obscura](https://www.bbc.co.uk/history/british/empire_seapower/vermeer_camera_01.shtml), you can even use a data projector to throw the image onto your canvas or panel to guide you.
 
-When that's working we will go on to build a...
+When that's working we will go on to build...
  
 ## The painting robot
 
