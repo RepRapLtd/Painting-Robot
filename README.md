@@ -19,7 +19,7 @@ So the general idea of this project is to start with an AI (or possibly even a *
   </tr>
 </table>
 
-These people have never existed. They were created by [StyleGAN2](https://arxiv.org/abs/1912.04958). You can [experiment with this here](https://thispersondoesnotexist.com/). We won't just be using AI images of people, but also of landscapes, seascpes, still lives, and all the rest.
+These people have never existed. They were created by [StyleGAN2](https://arxiv.org/abs/1912.04958). You can [experiment with this here](https://thispersondoesnotexist.com/). We won't just be using AI images of people, but also of landscapes, seascapes, still lives, and all the rest.
 
 We will then feed these into another AI that turns photographs into paintings in any number of different styles, like this:
 
