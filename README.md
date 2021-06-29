@@ -19,7 +19,7 @@ So the general idea of this project is to start with an AI (or possibly even a *
   </tr>
 </table>
 
-These people have never existed. They were created by [StyleGAN2](https://arxiv.org/abs/1912.04958). You can [experiment with this here](https://thispersondoesnotexist.com/). We won't just be using AI images of people, but also of landscapes, seascapes, still lives, and all the rest.
+These people have never existed. They were created by [StyleGAN2](https://arxiv.org/abs/1912.04958). You can [experiment with this here](https://thispersondoesnotexist.com/). 
 
 We will then feed these into another AI that turns photographs into paintings in any number of different styles, like this:
 
@@ -31,6 +31,14 @@ We will then feed these into another AI that turns photographs into paintings in
     </th>
   </tr>
 </table>
+
+We won't just be using AI images of people, but also of landscapes, seascapes, still lives, and all the rest. Here, for example, is a landscape image from [Artbreeder](https://www.artbreeder.com/). 
+
+![landscape 1](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/artb-1.jpg)
+
+This is an AI that works like [Richard Dawkins' Biomorphs selection program](http://www.emergentmind.com/biomorphs). The AI generates a number of images from which you select the one you like most. It then creates mutations of that image and you repeat your selection until you have something that looks like what you want. That is already pretending to be a painting, but here is the result of running it through the painting generation program:
+
+![landscape 1 nc](https://github.com/RepRapLtd/Painting-Robot/blob/master/Artworks/artb-1-nc.jpg)
 
 
 Finally, we'll build a robot that will paint that in acrylic on a panel. The software that generates paintings from photographs (real or otherwise) is called Night Café (after the Van Gough painting) and is [available here](https://creator.nightcafe.studio/).
