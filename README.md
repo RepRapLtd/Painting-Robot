@@ -57,6 +57,10 @@ But to start with, we are just going to make a...
 
 This will be a device loaded with cyan, magenta, yellow and white paint in precisely metered syringe pumps. You will click on a pixel of the image you want to paint, and the device will give you one mililiter (or whatever volume you select) of the mix you need to get the colour of that pixel.
 
+Here is a picture of the work-in-progress on the mixer, which is in the Paint-mixer directory of this repository:
+
+![mixer wip](https://github.com/RepRapLtd/Painting-Robot/blob/master/Paint-mixer/Pics/mixer-wip.jpg)
+
 You can then use that to paint the image by hand. If you're feeling like cheating, as [Vermeer did using a camera obscura](https://www.bbc.co.uk/history/british/empire_seapower/vermeer_camera_01.shtml), you can even use a data projector to throw the image onto your canvas or panel to guide you.
 
 When that's working we will go on to build...
