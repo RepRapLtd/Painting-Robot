@@ -84,3 +84,8 @@ https://watercolorbot.com/
 
 Generator AI: https://github.com/lucidrains/stylegan2-pytorch
 
+https://kvfrans.com/clipdraw-exploring-text-to-drawing-synthesis/
+
+https://github.com/BachiLi/diffvg
+
+
