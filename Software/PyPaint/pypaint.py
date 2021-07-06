@@ -58,8 +58,8 @@ class Picture:
   canvas.bind("<Button-1>", self.callback)
   self.window.mainloop()
 
-p = Picture('../../Artworks/ai6-nc.jpg')
-
+#p = Picture('../../Artworks/ai6-nc.jpg')
+p = Picture('../../Artworks/palette.jpg')
 
 
 
