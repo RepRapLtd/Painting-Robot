@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fc4235ff-4831-436f-98ba-a971ec31f96b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../Legacy/inkscape-unicorn" beforeDir="false" afterPath="$PROJECT_DIR$/../../Legacy/inkscape-unicorn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pypaint.py" beforeDir="false" afterPath="$PROJECT_DIR$/pypaint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../inkscape-unicorn" beforeDir="false" afterPath="$PROJECT_DIR$/../../inkscape-unicorn" afterDir="false" />
     </list>

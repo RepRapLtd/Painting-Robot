@@ -1,11 +1,101 @@
+# Control program for the paint mixer
+#
+# Adrian Bowyer
+# RepRap Ltd
+#
+# https://reprapltd.com
+#
+# 7 July 2021
+#
+# Licence: GPL
+#-------------------------------------------
+#
+
+
 from PIL import Image, ImageTk
-#, ImageFilter, ImagePalette
 import tkinter
-#import numpy as np
-#import cv2
-#from skimage import io
-#from skimage.viewer import ImageViewer, Qt
-#import matplotlib.pyplot as plt
+import serial
+
+# Set false to turn off commentary
+debug = True
+
+class Mixer:
+ def __init__(self):
+  self.usb = serial.Serial('/dev/ttyACM0',115200,timeout=0.1)
+  # Assume all retracted from last use
+  self.retracted = [4]*True
+  # Millilitres per unit of movement (i.e. what volume you get for G1 X1)
+  self.milliL = 0.01
+  # Extrusion rate, ml/second
+  self.extrudeRate = 0.3
+  # Retraction rate, ml/second
+  self.retractionRate = 1
+  # How small a movement can we consider to be zero?
+  self.zeroMovement = self.milliL*0.001
+  # How many ml to retract
+  self.retractMl = 0.1
+  # Tell it to use relative moves
+  self.usb.write(str.encode("G91\n"))
+
+ def Move(self, movements, f):
+  s = "G1 X"
+  s += str(movements[0])
+  s += " Y"
+  s += str(movements[1])
+  s += " Z"
+  s += str(movements[2])
+  s += " E"
+  s += str(movements[3])
+  s += " F"
+  s += str(f)
+  s += "\n"
+  self.usb.write(str.encode(s))
+  if debug:
+   print("Sent: ", s)
+
+ def Feed(self, mlPerSecond):
+  return 60.0*mlPerSecond*self.milliL
+
+ def Extrude(self, volumes):
+  movements = [4]*0.0
+  for v in range(4):
+   m = volumes[v]*self.milliL
+   if abs(m) < self.zeroMovement:
+    m = 0.0
+    self.retracted[v] = True
+   else:
+    self.retracted[v] = False
+   movements[v] = m
+  self.Move(movements, self.Feed(self.extrudeRate))
+  self.Retract()
+
+ def Retract(self):
+  movements = [4]*0.0
+  for v in range(4):
+   if self.retracted[v]:
+    m = 0
+   else:
+    m = -self.retractMl*self.milliL
+   self.retracted[v] = True
+   movements[v] = m
+  self.Move(movements, self.Feed(self.retractionRate))
+
+ def UnRetract(self):
+  movements = [4]*0.0
+  for v in range(4):
+   if self.retracted[v]:
+    m = self.retractMl*self.milliL
+   else:
+    m = 0.0
+   self.retracted[v] = False
+   movements[v] = m
+  self.Move(movements, self.Feed(self.retractionRate))
+
+
+
+
+
+
 
 def RGBtoCMYK(colour):
  r = colour[0]
