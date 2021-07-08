@@ -24,4 +24,3 @@ canvas.pack()
 image_tk = ImageTk.PhotoImage(image)
 canvas.create_image(image.size[0]//2, image.size[1]//2, image=image_tk)
 window.mainloop()
-

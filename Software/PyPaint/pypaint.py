@@ -147,4 +147,3 @@ p = Picture('../../Artworks/palette.jpg')
 
 
 
-
