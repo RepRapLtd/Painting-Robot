@@ -23,15 +23,15 @@ class Mixer:
  def __init__(self):
   self.usb = serial.Serial('/dev/ttyACM0',115200,timeout=0.1)
   # Assume all retracted from last use
-  self.retracted = [4]*True
-  # Millilitres per unit of movement (i.e. what volume you get for G1 X1)
-  self.milliL = 0.01
+  self.retracted = [True]*4
+  # Millilitres per unit of movement (i.e. reciprocal of what volume you get for G1 X1)
+  self.milliL = 1.0
   # Extrusion rate, ml/second
-  self.extrudeRate = 0.3
+  self.extrudeRate = 0.05
   # Retraction rate, ml/second
-  self.retractionRate = 1
+  self.retractionRate = 0.1
   # How small a movement can we consider to be zero?
-  self.zeroMovement = self.milliL*0.001
+  self.zeroMovement = self.milliL*0.0001
   # How many ml to retract
   self.retractMl = 0.1
   # Tell it to use relative moves
@@ -57,20 +57,20 @@ class Mixer:
   return 60.0*mlPerSecond*self.milliL
 
  def Extrude(self, volumes):
-  movements = [4]*0.0
+  movements = [0.0]*4
   for v in range(4):
    m = volumes[v]*self.milliL
    if abs(m) < self.zeroMovement:
     m = 0.0
     self.retracted[v] = True
    else:
+    m = m + self.retractMl*self.milliL
     self.retracted[v] = False
    movements[v] = m
   self.Move(movements, self.Feed(self.extrudeRate))
-  self.Retract()
 
  def Retract(self):
-  movements = [4]*0.0
+  movements = [0.0]*4
   for v in range(4):
    if self.retracted[v]:
     m = 0
@@ -79,22 +79,6 @@ class Mixer:
    self.retracted[v] = True
    movements[v] = m
   self.Move(movements, self.Feed(self.retractionRate))
-
- def UnRetract(self):
-  movements = [4]*0.0
-  for v in range(4):
-   if self.retracted[v]:
-    m = self.retractMl*self.milliL
-   else:
-    m = 0.0
-   self.retracted[v] = False
-   movements[v] = m
-  self.Move(movements, self.Feed(self.retractionRate))
-
-
-
-
-
 
 
 def RGBtoCMYK(colour):
@@ -129,14 +113,23 @@ def ColourScale(colour):
  b = colour[2]/255.0
  return (r, g, b)
 
+
+
 class Picture:
 
  def callback(self, event):
   c = ColourScale(self.pixels[event.x,event.y])
-  print("x = ", event.x, ", y = ", event.y, ", rgb: ", c, ", cmyw: ", RGBtoCMYW(c))
+  cmyw = RGBtoCMYW(c)
+  if debug:
+   print("x = ", event.x, ", y = ", event.y, ", rgb: ", c, ", cmyw: ", cmyw)
+  if event.x < 10 and event.y < 10:
+   self.mixer.Retract()
+  else:
+   self.mixer.Extrude(cmyw)
 
  def __init__(self, name):
   self.window = tkinter.Tk(className=name)
+  self.mixer = Mixer()
   im = Image.open(name)
   #im = im.quantize(4)
   #im.show()
