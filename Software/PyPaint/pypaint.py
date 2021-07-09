@@ -64,7 +64,8 @@ class Mixer:
     m = 0.0
     self.retracted[v] = True
    else:
-    m = m + self.retractMl*self.milliL
+    if self.retracted[v]:
+     m = m + self.retractMl*self.milliL
     self.retracted[v] = False
    movements[v] = m
   self.Move(movements, self.Feed(self.extrudeRate))
@@ -118,27 +119,66 @@ def ColourScale(colour):
 class Picture:
 
  def callback(self, event):
-  c = ColourScale(self.pixels[event.x,event.y])
-  cmyw = RGBtoCMYW(c)
+  pColour = self.pixels[event.x,event.y]
+  self.selectedColour.configure(bg='#%02x%02x%02x' % pColour)
+  c = ColourScale(pColour)
+  self.cmyw = RGBtoCMYW(c)
   if debug:
-   print("x = ", event.x, ", y = ", event.y, ", rgb: ", c, ", cmyw: ", cmyw)
-  if event.x < 10 and event.y < 10:
-   self.mixer.Retract()
-  else:
-   self.mixer.Extrude(cmyw)
+   print("x = ", event.x, ", y = ", event.y, ", rgb: ", c, ", cmyw: ", self.cmyw)
+
+
+ def Retract(self):
+  self.mixer.Retract()
+
+ def Extrude(self, volume):
+  volumes = [0.0]*4
+  for v in range(4):
+   volumes[v] = self.cmyw[v]*volume
+  self.mixer.Extrude(volumes)
+
+ def Extrude005(self):
+  self.Extrude(0.05)
+
+ def Extrude01(self):
+  self.Extrude(0.1)
+
+ def Extrude02(self):
+  self.Extrude(0.2)
+
+ def Extrude05(self):
+  self.Extrude(0.5)
+
+ def Extrude1(self):
+  self.Extrude(1.0)
 
  def __init__(self, name):
   self.window = tkinter.Tk(className=name)
   self.mixer = Mixer()
-  im = Image.open(name)
-  #im = im.quantize(4)
-  #im.show()
-  self.pixels = im.load()
-  canvas = tkinter.Canvas(self.window, width=im.size[0], height=im.size[1])
-  canvas.pack()
-  image_tk = ImageTk.PhotoImage(im)
-  canvas.create_image(im.size[0]//2, im.size[1]//2, image=image_tk)
-  canvas.bind("<Button-1>", self.callback)
+  self.image = Image.open(name)
+  self.pixels = self.image.load()
+  self.canvas = tkinter.Canvas(self.window, width=self.image.size[0], height=self.image.size[1])
+  self.canvas.pack()
+  image_tk = ImageTk.PhotoImage(self.image)
+  self.canvas.create_image(self.image.size[0]//2, self.image.size[1]//2, image=image_tk)
+
+  self.selectedColour = tkinter.Button(text="", width=10, height=3, bg="white", fg="white")
+  self.selectedColour.pack()
+  self.retract = tkinter.Button(text="retract", width=10, height=3, bg="grey", fg="white",command=self.Retract)
+  self.retract.pack()
+
+  self.e005 = tkinter.Button(text="0.05 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude005)
+  self.e005.pack()
+  self.e01 = tkinter.Button(text="0.1 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude01)
+  self.e01.pack()
+  self.e02 = tkinter.Button(text="0.2 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude02)
+  self.e02.pack()
+  self.e05 = tkinter.Button(text="0.5 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude05)
+  self.e05.pack()
+  self.e1 = tkinter.Button(text="1 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude1)
+  self.e1.pack()
+
+  self.canvas.bind("<Button-1>", self.callback)
+  self.cmyw = RGBtoCMYW((1, 1, 1))
   self.window.mainloop()
 
 #p = Picture('../../Artworks/ai6-nc.jpg')
