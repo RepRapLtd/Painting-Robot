@@ -79,7 +79,7 @@ class Mixer:
    movements[v] = m
   self.Move(movements, self.Feed(self.retractionRate))
 
-
+'''
 def RGBtoCMYK(colour):
  r = colour[0]
  g = colour[1]
@@ -89,7 +89,42 @@ def RGBtoCMYK(colour):
  m = (1.0 - g - k)/(1.0 - k)
  y = (1.0 - b - k)/(1.0 - k)
  return (c, m, y, k)
+'''
 
+'''
+def RGBtoCMYKW(colour):
+ r = colour[0]
+ g = colour[1]
+ b = colour[2]
+ c = 1 - r
+ m = 1 - g
+ y = 1 - b
+ k = min((c, m, y))
+ w = min((r, g, b))
+ c = c - k
+ m = m - k
+ y = y - k
+ return (c, m, y, k, w)
+'''
+
+def RGBtoCMYKW(colour):
+ r = colour[0]
+ g = colour[1]
+ b = colour[2]
+ k = 1.0 - max((r, g, b))
+ w = 1 - k
+ c = 1.0 - r + k/3.0
+ m = 1.0 - g + k/3.0
+ y = 1.0 - b + k/3.0
+ s = k + w + c + m + y
+ k = k/s
+ w = w/s
+ c = c/s
+ m = m/s
+ y = y/s
+ return (c, m, y, k, w)
+
+'''
 def RGBtoCMYW(colour):
  r = colour[0]
  g = colour[1]
@@ -105,6 +140,7 @@ def RGBtoCMYW(colour):
  m = m/s
  y = y/s
  return (c, m, y, w)
+'''
 
 def ColourScale(colour):
  r = colour[0]/255.0

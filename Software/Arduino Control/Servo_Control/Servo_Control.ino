@@ -20,10 +20,11 @@ Servo1.write(OpenAngle);}
 
 void loop(){ if (Serial.available()>0)
 {int open =Serial.parseInt();
-    if (open) 
-   {// Make servo go to angle typed
-   Servo1.write(OpenAngle); } else
-  {Servo1.write(ClosedAngle);}
+Servo1.write(open);
+    //if (open) 
+  // {// Make servo go to angle typed
+  // Servo1.write(OpenAngle); } else
+  //{Servo1.write(ClosedAngle);}
    while (Serial.available())
    Serial.read();}
 }
