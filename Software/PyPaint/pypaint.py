@@ -19,6 +19,7 @@ import serial
 # Set false to turn off commentary
 debug = True
 
+
 class Mixer:
  def __init__(self, live):
   if live:
@@ -26,7 +27,7 @@ class Mixer:
    # Tell it to use relative moves
    self.usb.write(str.encode("G91\n"))
   # Assume all retracted from last use
-  self.retracted = [True]*4
+  self.retracted = [True]*5
   # Millilitres per unit of movement (i.e. reciprocal of what volume you get for G1 X1)
   self.milliL = 1.0
   # Extrusion rate, ml/second
@@ -37,8 +38,17 @@ class Mixer:
   self.retractMl = 0.1
   self.live = live
 
+ def Mix(self, e1, e2):
+  s = "M567 P0 E"
+  s += str(e1) + ":"
+  s += str(e2)
+  if self.live:
+   self.usb.write(str.encode(s))
+  if debug:
+   print("Sent: ", s)
 
  def Move(self, movements, f):
+  self.Mix(movements[3], movements[4])
   s = "G1 X"
   s += str(movements[0])
   s += " Y"
@@ -46,7 +56,7 @@ class Mixer:
   s += " Z"
   s += str(movements[2])
   s += " E"
-  s += str(movements[3])
+  s += str(1.0 )
   s += " F"
   s += str(f)
   s += "\n"
@@ -59,8 +69,8 @@ class Mixer:
   return 60.0*mlPerSecond*self.milliL
 
  def Extrude(self, volumes):
-  movements = [0.0]*4
-  for v in range(4):
+  movements = [0.0]*5
+  for v in range(5):
    m = volumes[v]*self.milliL
    if self.retracted[v]:
     m = m + self.retractMl*self.milliL
@@ -69,8 +79,8 @@ class Mixer:
   self.Move(movements, self.Feed(self.extrudeRate))
 
  def Retract(self):
-  movements = [0.0]*4
-  for v in range(4):
+  movements = [0.0]*5
+  for v in range(5):
    if self.retracted[v]:
     m = 0
    else:
@@ -111,11 +121,14 @@ def RGBtoCMYKW(colour):
  r = colour[0]
  g = colour[1]
  b = colour[2]
- k = 1.0 - max((r, g, b))
- w = 1 - k
- c = 1.0 - r + k/3.0
- m = 1.0 - g + k/3.0
- y = 1.0 - b + k/3.0
+ w = min((r, g, b))
+ c = 1.0 - r
+ m = 1.0 - g
+ y = 1.0 - b
+ k = min((c, m, y))
+ c = c - k
+ m = m - k
+ y = y - k
  s = k + w + c + m + y
  k = k/s
  w = w/s
@@ -174,18 +187,18 @@ class Picture:
   colour[2] /= 25.0
   pColour = (int(round(colour[0]*255.0)), int(round(colour[1]*255.0)), int(round(colour[2]*255.0)))
   self.selectedColour.configure(bg='#%02x%02x%02x' % pColour)
-  self.cmyw = RGBtoCMYW(colour)
+  self.cmykw = RGBtoCMYKW(colour)
   if debug:
-   print("x =", event.x, ", y =", event.y, ", rgb:", FloatsToString(colour), ", cmyw:", FloatsToString(self.cmyw))
+   print("x =", event.x, ", y =", event.y, ", rgb:", FloatsToString(colour), ", cmykw:", FloatsToString(self.cmykw))
 
 
  def Retract(self):
   self.mixer.Retract()
 
  def Extrude(self, volume):
-  volumes = [0.0]*4
-  for v in range(4):
-   volumes[v] = self.cmyw[v]*volume
+  volumes = [0.0]*5
+  for v in range(5):
+   volumes[v] = self.cmykw[v] * volume
   self.mixer.Extrude(volumes)
 
  def Extrude005(self):
@@ -253,7 +266,7 @@ class Picture:
   self.quit.place(x=self.image.size[0] + 20, y=yPos)
 
   self.canvas.bind("<Button-1>", self.callback)
-  self.cmyw = RGBtoCMYW((1, 1, 1))
+  self.cmykw = RGBtoCMYKW((1, 1, 1))
   self.window.mainloop()
 
 #p = Picture('../../Artworks/ai6-nc.jpg')

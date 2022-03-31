@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb466800-2bce-4e1f-9315-aff6f6902396" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Mechanics/Projector Servo switch.FCStd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Mechanics/mirror-mount.FCStd" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mechanics/mirror-mount.FCStd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Mechanics/mirror-mount.FCStd1" beforeDir="false" afterPath="$PROJECT_DIR$/../../Mechanics/mirror-mount.FCStd1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Arduino Control/Servo_Control/Servo_Control.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../Arduino Control/Servo_Control/Servo_Control.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pypaint.py" beforeDir="false" afterPath="$PROJECT_DIR$/pypaint.py" afterDir="false" />
     </list>
@@ -42,7 +38,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.colourTest">
+  <component name="RunManager" selected="Python.pypaint">
     <configuration name="colourTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyPaint" />
       <option name="INTERPRETER_OPTIONS" value="" />
