@@ -230,39 +230,43 @@ class Picture:
   image_tk = ImageTk.PhotoImage(self.image)
   self.canvas.create_image(self.image.size[0]//2, self.image.size[1]//2, image=image_tk)
 
-  self.selectedColour = tkinter.Button(text="", width=10, height=3, bg="white", fg="white")
+  self.width = 10
+  self.height = 2
+  self.yInc = 50
+
+  self.selectedColour = tkinter.Button(text="", width=self.width, height=self.height, bg="white", fg="white")
   self.selectedColour.pack()
   yPos = 10
   self.selectedColour.place(x=self.image.size[0]+20, y = yPos)
-  self.retract = tkinter.Button(text="retract", width=10, height=3, bg="grey", fg="white",command=self.Retract)
+  self.retract = tkinter.Button(text="retract", width=self.width, height=self.height, bg="grey", fg="white",command=self.Retract)
   self.retract.pack()
-  yPos += 70
+  yPos += self.yInc
   self.retract.place(x=self.image.size[0]+20, y = yPos)
 
-  self.e005 = tkinter.Button(text="0.05 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude005)
+  self.e005 = tkinter.Button(text="0.05 ml", width=self.width, height=self.height, bg="grey", fg="white",command=self.Extrude005)
   self.e005.pack()
-  yPos += 70
+  yPos += self.yInc
   self.e005.place(x=self.image.size[0] + 20, y=yPos)
-  self.e01 = tkinter.Button(text="0.1 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude01)
+  self.e01 = tkinter.Button(text="0.1 ml", width=self.width, height=self.height, bg="grey", fg="white",command=self.Extrude01)
   self.e01.pack()
-  yPos += 70
+  yPos += self.yInc
   self.e01.place(x=self.image.size[0] + 20, y=yPos)
-  self.e02 = tkinter.Button(text="0.2 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude02)
+  self.e02 = tkinter.Button(text="0.2 ml", width=self.width, height=self.height, bg="grey", fg="white",command=self.Extrude02)
   self.e02.pack()
-  yPos += 70
+  yPos += self.yInc
   self.e02.place(x=self.image.size[0] + 20, y=yPos)
-  self.e05 = tkinter.Button(text="0.5 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude05)
+  self.e05 = tkinter.Button(text="0.5 ml", width=self.width, height=self.height, bg="grey", fg="white",command=self.Extrude05)
   self.e05.pack()
-  yPos += 70
+  yPos += self.yInc
   self.e05.place(x=self.image.size[0] + 20, y=yPos)
-  self.e1 = tkinter.Button(text="1 ml", width=10, height=3, bg="grey", fg="white",command=self.Extrude1)
+  self.e1 = tkinter.Button(text="1 ml", width=self.width, height=self.height, bg="grey", fg="white",command=self.Extrude1)
   self.e1.pack()
-  yPos += 70
+  yPos += self.yInc
   self.e1.place(x=self.image.size[0] + 20, y=yPos)
 
-  self.quit = tkinter.Button(text="Quit", width=10, height=3, bg="grey", fg="white",command=self.Quit)
+  self.quit = tkinter.Button(text="Quit", width=self.width, height=self.height, bg="grey", fg="white",command=self.Quit)
   self.quit.pack()
-  yPos += 100
+  yPos += self.yInc+20
   self.quit.place(x=self.image.size[0] + 20, y=yPos)
 
   self.canvas.bind("<Button-1>", self.callback)
@@ -270,7 +274,7 @@ class Picture:
   self.window.mainloop()
 
 #p = Picture('../../Artworks/ai6-nc.jpg')
-p = Picture('../../Artworks/combined-palette.jpg', False)
+p = Picture('../../Artworks/combined-palette-small.jpg', False)
 
 
 
