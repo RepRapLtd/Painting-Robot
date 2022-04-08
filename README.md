@@ -67,7 +67,14 @@ When that's working we will go on to build...
  
 ## The painting robot
 
-We intend the painting robot to be a machine that works with real artist's brushes on panels. It'll probably be a cartesian design and will be largely 3D printed.
+We intend the painting robot to be a machine that works with real artist's brushes on panels. It'll probably be a cartesian design and will be largely 3D printed. It will have a webcam looking at its panel under constant lighting. To paint a picture stored in the controling computer as a .png or whatever it will:
+
+1. Compute the biggest difference between the panel and the .png file.
+2. Mix paint to the average colour of that area.
+3. Apply it to the panel.
+4. Go to 1.
+
+Until a person stops it or maybe untill the difference measure in Step 1. is smaller than some threshold. 
 
 ## Licence
 
